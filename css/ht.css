@@ -1,0 +1,32 @@
+html, body {
+   height: 100%;
+}
+
+body {
+   background-color: #222222;
+   #D11250
+   #DB5800
+   #006899
+   #008F68
+}
+
+.eventlist {
+   width: 100%;
+   height: 100%;
+}
+
+.media-list {
+   width: 75%;
+   margin: 0 auto;
+}
+.media {
+   border: solid 1px black;
+   padding: 15px;
+}
+.media-object {
+   width: 200px;
+}
+
+#map {
+    height: 100%;
+}

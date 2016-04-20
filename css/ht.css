@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-   background-color: #222222;
+   background-color: black !important;
    /*#D11250
    #DB5800
    #006899
@@ -15,16 +15,38 @@ body {
    height: 100%;
 }
 
-.media-list {
+.media-list, .search {
    width: 75%;
    margin: 0 auto;
 }
-.media {
-   border: solid 1px black;
+
+.search-header {
+   color: white;
+}
+
+
+.media:first-child {
+   margin-top: 15px !important;
+}
+
+.media, .search {
+   border: solid 1px white;
+   color: white;
+   background-color: #343d46;
    padding: 15px;
 }
 .media-object {
    width: 200px;
+}
+
+#search-button, #clear-button {
+   margin-top: 15px !important;
+}
+
+button, input {
+   color: #4f5b66 !important;
+   background: #262626 !important;
+   border: 0px !important;
 }
 
 #map {

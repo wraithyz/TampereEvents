@@ -2,7 +2,7 @@ html, body {
     height: 100%;
 }
 body {
-    background-color: #1e2429 !important;
+    background-color: #13171a !important;
 }
 .container-fluid {
     margin: 0 auto;
@@ -17,7 +17,7 @@ body {
 .media, .search, .sidemap {
     border: solid 1px #4a5763;
     color: white;
-    background-color: #343d46;
+    background-color: #2c333b;
     padding: 15px;
 }
 .media-object {

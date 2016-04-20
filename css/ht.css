@@ -35,20 +35,18 @@ button, input, select {
     background: #262626 !important;
     border: 0px !important;
 }
-
 #sidebar {
-   height: 400px;
+    height: 400px;
 }
-
 @media (min-width: 979px) {
     #sidebar.affix-top {
         position: static;
-        margin-top: 25px;
+        margin-top: 45px;
         width: 100%;
     }
     #sidebar.affix {
         position: fixed;
-        top: 25px;
+        top: 45px;
         width: 25%;
     }
 }

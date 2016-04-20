@@ -6,9 +6,9 @@ window.onload = loadEvents;
 var map;
 
 $('#sidebar').affix({
-      offset: {
+    offset: {
         top: $('.search').height()
-      }
+    }
 });
 
 function loadEvents() {
@@ -21,14 +21,14 @@ function loadEvents() {
     var start = new Date();
     start.setHours(0, 0, 0, 0);
     var milliseconds = start.getTime();
-    req.open("GET", "http://visittampere.fi:80/api/search?type=event&start_datetime=" + milliseconds + "&limit=5", true);
+    req.open("GET", "http://visittampere.fi:80/api/search?type=event&start_datetime=" + milliseconds + "&limit=10", true);
     req.send();
 }
 
 function insertEvents(data) {
     var events = JSON.parse(data);
     for (i = 0; i < events.length; i++) {
-      var startTime = new Date(events[0].times[0].start_datetime);
+        var startTime = new Date(events[0].times[0].start_datetime);
         eventlist.append(
             $('<li/>', {
                 'class': 'media'
@@ -63,10 +63,10 @@ function insertEvents(data) {
                     $('<p/>', {
                         'class': 'media-date',
                         'text': startTime.getDate() + '.' +
-                        (parseInt(startTime.getMonth()) + 1)+ '.' +
-                        startTime.getFullYear() + ' ' +
-                        startTime.getHours() + ':' +
-                        (startTime.getMinutes() == '0' ? startTime.getMinutes() + '0' : startTime.getMinutes())
+                            (parseInt(startTime.getMonth()) + 1) + '.' +
+                            startTime.getFullYear() + ' ' +
+                            startTime.getHours() + ':' +
+                            (startTime.getMinutes() == '0' ? startTime.getMinutes() + '0' : startTime.getMinutes())
                     })
                 ).append(
                     $('<p/>', {
@@ -74,16 +74,26 @@ function insertEvents(data) {
                         'text': events[i].description
                     })
                 )
-            ));
+            ).append(
+                $('<div/>', {
+                    'class': 'media-right'
+                }).append(
+                    $('<button/>', {
+                        'class': 'btn btn-defaut'
+                    }).append(
+                        $('<span/>', {
+                            'class': 'glyphicon glyphicon-star',
+                            'style': 'color:yellow'
+                        })))));
+        }
     }
-}
 
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            lat: 61.4982,
-            lng: 23.761
-        },
-        zoom: 12
-    });
-}
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: 61.4982,
+                lng: 23.761
+            },
+            zoom: 12
+        });
+    }

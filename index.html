@@ -8,6 +8,7 @@
     <title>HT</title>
     <link rel="stylesheet" href="css/ht.css" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-datepicker3.min.css" />
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -51,19 +52,17 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Aloituspäivä
-                                    <span class="caret"></span>
-                                </button>
+                            <div class="form-group">
+                               <div id="start-date-picker">
+                                   <input type="text" class="form-control">
+                               </div>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Päättymispäivä
-                                    <span class="caret"></span>
-                                </button>
+                            <div class="form-group">
+                                <div id="end-date-picker">
+                                    <input type="text" class="form-control">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -92,8 +91,10 @@
             </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="locales/bootstrap-datepicker.fi.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC64_sMdbRbnQHNC2rl4vxcBf8j7vb0LjM&callback=initMap" async defer></script>
     <script src="js/ht.js" charset="utf-8"></script>
     <script src="js/search.js" charset="utf-8"></script>

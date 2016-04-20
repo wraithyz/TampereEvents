@@ -1,6 +1,15 @@
 var eventlist = $(".media-list");
 
+window.onload = initMap;
 window.onload = loadEvents;
+
+var map;
+
+$('#sidebar').affix({
+      offset: {
+        top: $('.search').height()
+      }
+});
 
 function loadEvents() {
     var req = new XMLHttpRequest();
@@ -69,16 +78,12 @@ function insertEvents(data) {
     }
 }
 
-/*window.onload = initMap;
-
-var map;
-
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
             lat: 61.4982,
             lng: 23.761
         },
-        zoom: 8
+        zoom: 12
     });
-}*/
+}

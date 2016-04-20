@@ -15,73 +15,86 @@
 </head>
 
 <body>
-    <div class="search">
-        <h1 class="search-header">Hae</h1>
+    <div class="container-fluid" id="content">
         <div class="row">
-            <div class="col-md-2">
-                <h4>Hakusana:</h4>
-            </div>
-            <div class="col-md-2">
-                <h4>Kategoria:</h4>
-            </div>
-            <div class="col-md-2">
-                <h4>Aloituspäivä:</h4>
-            </div>
-            <div class="col-md-2">
-                <h4>Päättymispäivä:</h4>
+            <div class="col-lg-12">
+                <div class="search">
+                    <h1 class="search-header">Hae</h1>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <h4>Hakusana:</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Kategoria:</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Aloituspäivä:</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Päättymispäivä:</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="input-group">
+                                <input id="search-input-text" type="text" class="form-control" placeholder="Nimi tai sijainti">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <select class="form-control" id="search-input-category">
+                                    <option>Valitse kategoria</option>
+                                    <option>Musiikki</option>
+                                    <option>Urheilu</option>
+                                    <option>Ruoka</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Aloituspäivä
+                                    <span class="caret"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Päättymispäivä
+                                    <span class="caret"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button id="search-button" type="button" class="btn btn-default btn-lg">
+                                Hae
+                            </button>
+                            <button id="clear-button" type="button" class="btn btn-default btn-lg">
+                                Tyhjennä
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2">
-                <div class="input-group">
-                    <input id="search-input-text" type="text" class="form-control" placeholder="Nimi tai sijainti">
-                </div>
+            <div class="col-lg-8">
+                <ul class="media-list">
+                </ul>
             </div>
-            <div class="col-md-2">
-                <div class="form-group">
-                    <select class="form-control" id="search-input-category">
-                        <option>Valitse kategoria</option>
-                        <option>Musiikki</option>
-                        <option>Urheilu</option>
-                        <option>Ruoka</option>
-                    </select>
+            <div class="col-lg-4">
+                <div id="sidebar" class="sidemap">
+                    <div id="map"></div>
                 </div>
-            </div>
-            <div class="col-md-2">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Aloituspäivä
-                        <span class="caret"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Päättymispäivä
-                        <span class="caret"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <button id="search-button" type="button" class="btn btn-default btn-lg">
-                    Hae
-                </button>
-                <button id="clear-button" type="button" class="btn btn-default btn-lg">
-                    Tyhjennä
-                </button>
             </div>
         </div>
     </div>
-    <ul class="media-list">
-    </ul>
-    <!--<div id="map"></div>
-   <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap" async defer></script>
-   -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC64_sMdbRbnQHNC2rl4vxcBf8j7vb0LjM&callback=initMap" async defer></script>
     <script src="js/ht.js" charset="utf-8"></script>
     <script src="js/search.js" charset="utf-8"></script>
 </body>

@@ -1,54 +1,61 @@
 html, body {
-   height: 100%;
+    height: 100%;
 }
-
 body {
-   background-color: #1e2429 !important;
-   /*#D11250
+    background-color: #1e2429 !important;
+    /*#D11250
    #DB5800
    #006899
    #008F68*/
 }
-
-.eventlist {
-   width: 100%;
-   height: 100%;
+.container-fluid {
+    margin: 0 auto;
+    width: 80%;
 }
-
-.media-list, .search {
-   width: 75%;
-   margin: 0 auto;
-}
-
 .search-header {
-   color: white;
+    color: white;
 }
-
-
 .media:first-child {
-   margin-top: 15px !important;
+    margin-top: 15px !important;
 }
-
-.media, .search {
-   border: solid 1px #4a5763;
-   color: white;
-   background-color: #343d46;
-   padding: 15px;
+.media, .search, .sidemap {
+    border: solid 1px #4a5763;
+    color: white;
+    background-color: #343d46;
+    padding: 15px;
 }
 .media-object {
-   width: 200px;
+    width: 200px;
 }
-
-#search-button, #clear-button {
-   margin-top: 15px !important;
+#search-button, #clear-button, .search, .sidemap {
+    margin-top: 15px !important;
 }
-
 button, input, select {
-   color: gray !important;
-   background: #262626 !important;
-   border: 0px !important;
+    color: gray !important;
+    background: #262626 !important;
+    border: 0px !important;
 }
 
+#sidebar {
+   height: 400px;
+}
+
+@media (min-width: 979px) {
+    #sidebar.affix-top {
+        position: static;
+        margin-top: 25px;
+        width: 100%;
+    }
+    #sidebar.affix {
+        position: fixed;
+        top: 25px;
+        width: 25%;
+    }
+}
+.affix, .affix-top {
+    position: static;
+}
 #map {
     height: 100%;
+    width: 100%;
 }

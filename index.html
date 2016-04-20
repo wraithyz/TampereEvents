@@ -34,22 +34,17 @@
         <div class="row">
             <div class="col-md-2">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Nimi tai sijainti">
+                    <input id="search-input-text" type="text" class="form-control" placeholder="Nimi tai sijainti">
                 </div>
             </div>
             <div class="col-md-2">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Kategoria
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+                <div class="form-group">
+                    <select class="form-control" id="search-input-category">
+                        <option>Valitse kategoria</option>
+                        <option>Musiikki</option>
+                        <option>Urheilu</option>
+                        <option>Ruoka</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-2">
@@ -88,6 +83,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/ht.js" charset="utf-8"></script>
+    <script src="js/search.js" charset="utf-8"></script>
 </body>
 
 </html>

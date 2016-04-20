@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-   background-color: black !important;
+   background-color: #1e2429 !important;
    /*#D11250
    #DB5800
    #006899
@@ -30,7 +30,7 @@ body {
 }
 
 .media, .search {
-   border: solid 1px white;
+   border: solid 1px #4a5763;
    color: white;
    background-color: #343d46;
    padding: 15px;
@@ -43,8 +43,8 @@ body {
    margin-top: 15px !important;
 }
 
-button, input {
-   color: #4f5b66 !important;
+button, input, select {
+   color: gray !important;
    background: #262626 !important;
    border: 0px !important;
 }

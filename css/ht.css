@@ -11,8 +11,8 @@ body {
 .search-header {
     color: white;
 }
-.media:first-child {
-    margin-top: 15px !important;
+.media:first-child, .sidemap {
+    margin-top: 30px !important;
 }
 .media, .search, .sidemap {
     border: solid 1px #4a5763;
@@ -23,7 +23,7 @@ body {
 .media-object {
     width: 200px;
 }
-#search-button, #clear-button, .search, .sidemap {
+#search-button, #clear-button, .search {
     margin-top: 15px !important;
 }
 button, input, select {

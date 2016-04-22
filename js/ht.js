@@ -1,11 +1,9 @@
 var eventlist = $(".media-list");
+var events;
 
 window.onload = function() {
     loadEvents();
-    initMap();
 };
-
-var map;
 
 $('#sidebar').affix({
     offset: {
@@ -50,7 +48,7 @@ function loadEvents(searchText, category, startDate, endDate, free) {
 }
 
 function insertEvents(data) {
-    var events = JSON.parse(data);
+    events = JSON.parse(data);
     eventlist.empty();
     for (i = 0; i < events.length; i++) {
         var startTime = events[i].single_datetime === false ? new Date(events[i].times[0].start_datetime) : new Date(events[i].start_datetime);
@@ -105,22 +103,27 @@ function insertEvents(data) {
                     'class': 'media-right'
                 }).append(
                     $('<button/>', {
-                        'class': 'btn btn-defaut'
+                        'class': 'btn btn-defaut',
+                        'id': 'favorite-button-' + events[i].item_id,
+                        'value': events[i].item_id
                     }).append(
                         $('<span/>', {
                             'class': 'glyphicon glyphicon-star',
                             'style': 'color:yellow'
-                        })))));
+                        })))
+            ).append(
+                $('<div/>', {
+                    'class': 'media-right'
+                }).append(
+                    $('<button/>', {
+                        'class': 'btn btn-defaut marker-button',
+                        'id': 'marker-button-' + events[i].item_id,
+                        'value': events[i].item_id
+                    }).append(
+                        $('<span/>', {
+                            'class': 'glyphicon glyphicon-map-marker'
+                        })))
+            ));
     }
-}
-
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            // Tampere.
-            lat: 61.4982,
-            lng: 23.761
-        },
-        zoom: 12
-    });
+    $(".marker-button").click(geoLocate);
 }

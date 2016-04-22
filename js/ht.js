@@ -51,8 +51,9 @@ function loadEvents(searchText, category, startDate, endDate, free) {
 
 function insertEvents(data) {
     var events = JSON.parse(data);
+    eventlist.empty();
     for (i = 0; i < events.length; i++) {
-        var startTime = new Date(events[0].times[0].start_datetime);
+        var startTime = events[i].single_datetime === false ? new Date(events[i].times[0].start_datetime) : new Date(events[i].start_datetime);
         var picture = events[i].hasOwnProperty("image") ? events[i].image.src : "img/placeholder.jpg";
         eventlist.append(
             $('<li/>', {
@@ -116,6 +117,7 @@ function insertEvents(data) {
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
+            // Tampere.
             lat: 61.4982,
             lng: 23.761
         },

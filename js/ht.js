@@ -125,5 +125,6 @@ function insertEvents(data) {
                         })))
             ));
     }
-    $(".marker-button").click(geoLocate);
+    $(".marker-button").click(geoLocateSingleEvent);
+    geoLocateAllEvents();
 }

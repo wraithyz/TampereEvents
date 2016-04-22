@@ -12,11 +12,7 @@ function initMap() {
     });
 }
 
-function addMarker(lat, lng, title) {
-    var latLng = {
-        lat: lat,
-        lng: lng
-    }
+function addMarker(latLng, title) {
     var marker = new google.maps.Marker({
         position: latLng,
         map: map,
@@ -45,20 +41,40 @@ function geoLocate() {
             break;
         }
     }
-    if (address) {
-        var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyDPU72Fl2qvt9EnTsY2HWdBvrc_kidGE5A";
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function() {
-            if (req.readyState == 4 && req.status == 200) {
-                var data = JSON.parse(req.responseText);
-                if (data.status === "OK") {
-                    hideMarkers();
-                    button.children("span").css("color", "green");
-                    addMarker(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng, title);
+    if (address && title) {
+        $(".glyphicon-map-marker").css("color", "gray");
+        if (sessionStorage.getItem(id)) {
+            hideMarkers();
+            button.children("span").css("color", "green");
+            addMarker(JSON.parse(sessionStorage.getItem(id)), title);
+        } else {
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyDPU72Fl2qvt9EnTsY2HWdBvrc_kidGE5A";
+            var req = new XMLHttpRequest();
+            req.onreadystatechange = function() {
+                if (req.readyState == 4 && req.status == 200) {
+                    var data = JSON.parse(req.responseText);
+                    if (data.status === "OK") {
+                        var latLng = {
+                            lat: data.results[0].geometry.location.lat,
+                            lng: data.results[0].geometry.location.lng
+                        }
+                        hideMarkers();
+                        storeGeoLocationData(id, latLng);
+                        button.children("span").css("color", "green");
+                        addMarker(latLng, title);
+                    }
                 }
-            }
-        };
-        req.open("GET", url, true);
-        req.send();
+            };
+            req.open("GET", url, true);
+            req.send();
+        }
+    }
+}
+
+function storeGeoLocationData(id, location) {
+    if (typeof(Storage) !== "undefined") {
+        sessionStorage.setItem(id, JSON.stringify(location));
+    } else {
+        console.log("Sessionstorage not supported.");
     }
 }

@@ -34,7 +34,7 @@ function loadEvents(searchText, category, startDate, endDate, free) {
         url += "&start_datetime	=" + (new Date(today.getFullYear(), today.getMonth(), today.getDate())).getTime();
     }
     url += searchText ? "&text=" + searchText : "";
-    url += category ? "&category=" + category : "";
+    url += category ? "&tag=" + category : "";
     url += endDate ? "&end_datetime=" + endDate : "";
     url += free ? "&free=" + free : "";
     var req = new XMLHttpRequest();

@@ -1,5 +1,6 @@
 var eventlist = $(".media-list");
-var events;
+var events = new Array();
+
 
 window.onload = function() {
     loadEvents();
@@ -48,22 +49,58 @@ function loadEvents(searchText, category, startDate, endDate, free) {
 }
 
 function findClosestStartTime(event) {
-   var today = new Date();
-   var now = (new Date(today.getFullYear(), today.getMonth(), today.getDate())).getTime();
-   for (i = 0; event.times.length; i++) {
-      if (event.times[i] >= now) {
-         return event.times[i];
-         break;
-      }
-   }
+    var today = new Date();
+    var now = (new Date(today.getFullYear(), today.getMonth(), today.getDate())).getTime();
+    for (j = 0; event.times.length; j++) {
+        if (event.times[j].start_datetime >= now) {
+            return {
+                start_datetime: event.times[j].start_datetime,
+                end_datetime: event.times[j].end_datetime
+            };
+        }
+    }
+    return {
+        start_datetime: event.times[event.times.length - 1].start_datetime,
+        end_datetime: event.times[event.times.length - 1].end_datetime
+    };
 }
 
 function insertEvents(data) {
-    events = JSON.parse(data);
+    var unFilteredEvents = JSON.parse(data);
+    events = [];
     eventlist.empty();
+    for (i = 0; i < unFilteredEvents.length; i++) {
+        var times;
+        if (unFilteredEvents[i].single_datetime === false) {
+            times = findClosestStartTime(unFilteredEvents[i]);
+        } else {
+            times = {
+                start_datetime: unFilteredEvents[i].start_datetime,
+                end_datetime: unFilteredEvents[i].start_datetime
+            };
+        }
+        events.push({
+            item_id: unFilteredEvents[i].item_id,
+            title: unFilteredEvents[i].title,
+            description: unFilteredEvents[i].description,
+            contact_info: {
+                address: unFilteredEvents[i].contact_info.address,
+                city: unFilteredEvents[i].contact_info.city,
+                link: unFilteredEvents[i].contact_info.link,
+            },
+            image: {
+                src: unFilteredEvents[i].hasOwnProperty("image") ? unFilteredEvents[i].image.src : "img/placeholder.jpg"
+            },
+            is_free: unFilteredEvents[i].is_free,
+            single_datetime: unFilteredEvents[i].single_datetime,
+            times: times
+        });
+    }
+    events.sort(function(a, b) {
+        return a.times.start_datetime - b.times.start_datetime;
+    });
     for (i = 0; i < events.length; i++) {
-        var startTime = events[i].single_datetime === false ? new Date(findClosestStartTime(events[i])) : new Date(events[i].start_datetime);
-        var picture = events[i].hasOwnProperty("image") ? events[i].image.src : "img/placeholder.jpg";
+        var startTime = new Date(events[i].times.start_datetime);
         eventlist.append(
             $('<li/>', {
                 'class': 'media'
@@ -75,7 +112,7 @@ function insertEvents(data) {
                         'href': '#'
                     }).append(
                         $('<img/>', {
-                            'src': picture,
+                            'src': events[i].image.src,
                             'class': 'media-object'
                         })
                     )

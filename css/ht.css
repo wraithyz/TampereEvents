@@ -23,7 +23,7 @@ body {
 .media-object {
     width: 200px;
 }
-#search-button, #clear-button, .search {
+#search-button, #clear-button, .search, #favorites-button {
     margin-top: 15px !important;
 }
 button, input, select {

@@ -1,13 +1,14 @@
 var map;
 var markers = new Array();
 
+var tampere = {
+   lat: 61.4982,
+   lng: 23.761
+};
+
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {
-            // Tampere.
-            lat: 61.4982,
-            lng: 23.761
-        },
+        center: tampere,
         zoom: 12
     });
 }
@@ -21,7 +22,10 @@ function addMarker(latLng, title, pan) {
     if (pan) {
         map.setZoom(14);
         map.panTo(marker.position);
-    }
+    } else {
+      map.setZoom(12);
+      map.panTo(tampere);
+   }
     markers.push(marker);
 }
 

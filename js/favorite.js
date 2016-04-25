@@ -1,3 +1,11 @@
+$("#favorites-button").click(function() {
+   var events = new Array();
+   for (i = 0; i < localStorage.length; i++) {
+      var key = localStorage.key(i);
+      events.push(JSON.parse(localStorage.getItem(key)));
+   }
+   insertEvents(JSON.stringify(events));
+});
 
 function readFavorites() {
    var buttons = $(".favorite-button");

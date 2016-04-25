@@ -1,9 +1,12 @@
+$("#locate-button").click(locateUser);
+$("#locate-events-button").click(geoLocateAllEvents);
+
 var map;
 var markers = new Array();
 
 var tampere = {
-   lat: 61.4982,
-   lng: 23.761
+    lat: 61.4982,
+    lng: 23.761
 };
 
 function initMap() {
@@ -11,6 +14,29 @@ function initMap() {
         center: tampere,
         zoom: 12
     });
+}
+
+function locateUser() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            addMarker(pos, "Olet tässä!", true);
+        }, function() {
+            console.log("Could not find location.");
+        }, {
+            maximumAge: 0,
+            timeout: 5000
+        });
+    } else {
+        console.log("Not supported.");
+    }
+}
+
+function test(position) {
+    console.log("xD");
 }
 
 function addMarker(latLng, title, pan) {
@@ -23,9 +49,9 @@ function addMarker(latLng, title, pan) {
         map.setZoom(14);
         map.panTo(marker.position);
     } else {
-      map.setZoom(12);
-      map.panTo(tampere);
-   }
+        map.setZoom(12);
+        map.panTo(tampere);
+    }
     markers.push(marker);
 }
 

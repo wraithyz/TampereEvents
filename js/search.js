@@ -21,6 +21,9 @@ function validateDate(date) {
 }
 
 function searchEvents() {
+    $("#list-header").children("span").text(" HAKUTULOKSET");
+    $("#list-header").children("span").removeClass("glyphicon-star");
+    $("#list-header").children("span").addClass("glyphicon-search");
     var text = $("#search-input-text").val();
     var category = $("#search-input-category").val() !== "Valitse kategoria" ? $("#search-input-category").val() : "";
     var start = validateDate($("#start-date").val());
@@ -35,8 +38,8 @@ function searchEvents() {
 }
 
 function clearSearch() {
-   $("#search-input-text").val("");
-   $("#search-input-category").val("Valitse kategoria");
-   $("#start-date").val("");
-   $("#end-date").val("");
+    $("#search-input-text").val("");
+    $("#search-input-category").val("Valitse kategoria");
+    $("#start-date").val("");
+    $("#end-date").val("");
 }

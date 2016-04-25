@@ -1,4 +1,7 @@
 $("#favorites-button").click(function() {
+   $("#list-header").children("span").text(" SUOSIKIT");
+   $("#list-header").children("span").removeClass("glyphicon-search");
+   $("#list-header").children("span").addClass("glyphicon-star");
    var events = new Array();
    for (i = 0; i < localStorage.length; i++) {
       var key = localStorage.key(i);

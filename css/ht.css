@@ -11,24 +11,31 @@ body {
 .search-header {
     color: white;
 }
-.media:first-child, .sidemap {
-    margin-top: 30px !important;
+.media:first-child {
+    margin-top: 15px !important;
 }
-.media, .search, .sidemap {
+.sidemap {
+   margin-top: 62px !important;
+}
+.media, .search, .sidemap, .list-header {
     border: solid 1px #4a5763;
     color: white;
     background-color: #2c333b;
     padding: 15px;
 }
+.list-header {
+   margin-top: 15px !important;
+   padding: 5px;
+}
+
 .sidemap-buttons {
     height: 15%;
     margin-top: 10px;
     padding: 5px;
 }
 #locate-button {
-   float: right !important;
+    float: right !important;
 }
-
 .media-object {
     width: 200px;
 }

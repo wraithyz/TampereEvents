@@ -43,15 +43,26 @@ function loadEvents(searchText, category, startDate, endDate, free) {
             insertEvents(req.responseText);
         }
     };
-    req.open("GET", url + "&limit=5", true);
+    req.open("GET", url + "&limit=10", true);
     req.send();
+}
+
+function findClosestStartTime(event) {
+   var today = new Date();
+   var now = (new Date(today.getFullYear(), today.getMonth(), today.getDate())).getTime();
+   for (i = 0; event.times.length; i++) {
+      if (event.times[i] >= now) {
+         return event.times[i];
+         break;
+      }
+   }
 }
 
 function insertEvents(data) {
     events = JSON.parse(data);
     eventlist.empty();
     for (i = 0; i < events.length; i++) {
-        var startTime = events[i].single_datetime === false ? new Date(events[i].times[0].start_datetime) : new Date(events[i].start_datetime);
+        var startTime = events[i].single_datetime === false ? new Date(findClosestStartTime(events[i])) : new Date(events[i].start_datetime);
         var picture = events[i].hasOwnProperty("image") ? events[i].image.src : "img/placeholder.jpg";
         eventlist.append(
             $('<li/>', {

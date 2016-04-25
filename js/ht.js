@@ -103,13 +103,12 @@ function insertEvents(data) {
                     'class': 'media-right'
                 }).append(
                     $('<button/>', {
-                        'class': 'btn btn-defaut',
+                        'class': 'btn btn-defaut favorite-button',
                         'id': 'favorite-button-' + events[i].item_id,
                         'value': events[i].item_id
                     }).append(
                         $('<span/>', {
-                            'class': 'glyphicon glyphicon-star',
-                            'style': 'color:yellow'
+                            'class': 'glyphicon glyphicon-star'
                         })))
             ).append(
                 $('<div/>', {
@@ -126,5 +125,7 @@ function insertEvents(data) {
             ));
     }
     $(".marker-button").click(geoLocateSingleEvent);
+    $(".favorite-button").click(setFavorite);
+    readFavorites();
     geoLocateAllEvents();
 }

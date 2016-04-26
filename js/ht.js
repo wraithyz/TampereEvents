@@ -1,6 +1,11 @@
 var eventlist = $(".media-list");
 var events = new Array();
 
+$(document).on('click', 'a', function(e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    window.open(url, '_blank');
+});
 
 window.onload = function() {
     loadEvents();
@@ -65,14 +70,21 @@ function findClosestStartTime(event) {
     };
 }
 
-function insertEvents(data) {
+function insertEvents(data, favorites) {
     var unFilteredEvents = JSON.parse(data);
     events = [];
     eventlist.empty();
     for (i = 0; i < unFilteredEvents.length; i++) {
         var times;
         if (unFilteredEvents[i].single_datetime === false) {
-            times = findClosestStartTime(unFilteredEvents[i]);
+            if (favorites) {
+                times = {
+                    start_datetime: unFilteredEvents[i].times.start_datetime,
+                    end_datetime: unFilteredEvents[i].times.end_datetime
+                }
+            } else {
+                times = findClosestStartTime(unFilteredEvents[i]);
+            }
         } else {
             times = {
                 start_datetime: unFilteredEvents[i].start_datetime,
@@ -145,6 +157,15 @@ function insertEvents(data) {
                         'class': 'media-description',
                         'text': events[i].description
                     })
+                ).append(
+                    $('<a/>', {
+                        'href': events[i].contact_info.link
+                    }).append(
+                        $('<p/>', {
+                            'class': 'media-link',
+                            'text': events[i].contact_info.link
+                        })
+                    )
                 )
             ).append(
                 $('<div/>', {

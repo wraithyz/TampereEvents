@@ -7,7 +7,7 @@ $("#favorites-button").click(function() {
       var key = localStorage.key(i);
       events.push(JSON.parse(localStorage.getItem(key)));
    }
-   insertEvents(JSON.stringify(events));
+   insertEvents(JSON.stringify(events), true);
 });
 
 function readFavorites() {

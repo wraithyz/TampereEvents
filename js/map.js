@@ -23,7 +23,7 @@ function locateUser() {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            addMarker(pos, "Olet tässä!", true);
+            addMarker(pos, "Olet tässä!", true, true);
         }, function() {
             console.log("Could not find location.");
         }, {
@@ -35,16 +35,15 @@ function locateUser() {
     }
 }
 
-function test(position) {
-    console.log("xD");
-}
-
-function addMarker(latLng, title, pan) {
+function addMarker(latLng, title, pan, custom) {
     var marker = new google.maps.Marker({
         position: latLng,
         map: map,
         title: title
     });
+    if (custom) {
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+    }
     if (pan) {
         map.setZoom(14);
         map.panTo(marker.position);

@@ -120,14 +120,10 @@ function insertEvents(data, favorites) {
                 $('<div/>', {
                     'class': 'media-left'
                 }).append(
-                    $('<a/>', {
-                        'href': '#'
-                    }).append(
-                        $('<img/>', {
-                            'src': events[i].image.src,
-                            'class': 'media-object'
-                        })
-                    )
+                    $('<img/>', {
+                        'src': events[i].image.src,
+                        'class': 'media-object'
+                    })
                 )
             )
             .append(
@@ -191,10 +187,57 @@ function insertEvents(data, favorites) {
                         $('<span/>', {
                             'class': 'glyphicon glyphicon-map-marker'
                         })))
+            ).append(
+                $('<div/>', {
+                    'class': 'pull-right'
+                }).append(
+                    $('<button/>', {
+                        'class': 'btn btn-defaut comments-button',
+                        'id': 'comments-button-' + events[i].item_id,
+                        'value': events[i].item_id,
+                        'text': 'Kommentit'
+                    }).append(
+                        $('<span/>', {
+                            'class': 'glyphicon glyphicon-menu-down pull-left',
+                            'style': 'padding-right:5px'
+                        })))
+            ).append(
+                $('<div/>', {
+                    'class': 'collapse'
+                }).append(
+                    $('<div/>', {
+                        'class': 'media'
+                    })
+                    .append(
+                       $('<input/>', {
+                           'type': 'text',
+                           'id': 'name-input-' + events[i].item_id,
+                           'placeholder': 'Nimi',
+                           'class': 'form-control comment-name'
+                       })
+                    )
+                    .append(
+                        $('<textarea/>', {
+                            'type': 'text',
+                            'id': 'comment-input-' + events[i].item_id,
+                            'class': 'form-control comment-comment',
+                            'placeholder': 'Kommentti'
+                        })
+                    )
+                    .append(
+                       $('<button/>', {
+                          'class': 'btn btn-defaut comment-send-button',
+                          'id': 'comment-send-button-' + events[i].item_id,
+                          'text': 'Lähetä',
+                          'value': events[i].item_id
+                      })
+                    )
+                )
             ));
     }
     $(".marker-button").click(geoLocateSingleEvent);
     $(".favorite-button").click(setFavorite);
+    $(".comments-button").click(showComments);
     readFavorites();
     geoLocateAllEvents();
 }

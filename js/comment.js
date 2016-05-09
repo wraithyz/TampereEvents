@@ -22,6 +22,14 @@ ref.on("child_changed", function(snapshot) {
     });
 });
 
+function formatDate(time) {
+    return (time.getDate() + "." +
+        (time.getMonth() + 1) + "." +
+        time.getFullYear() + " " +
+        time.getHours() + ":" +
+        (time.getMinutes() == "0" ? time.getMinutes() + "0" : time.getMinutes()));
+}
+
 function postComment() {
     var button = $(this);
     var id = $(this).val();
@@ -35,6 +43,15 @@ function postComment() {
             comment: comment,
             date: (new Date).getTime()
         });
+        $("#name-input-" + id).val("");
+        $("#comment-input-" + id).val("");
+        var list = $('#comment-list-' + id);
+        list.append(
+            $('<li/>', {
+               'id': 'comment-' + id,
+               'text': name + ': \"' + comment + "\" (" + formatDate(new Date()) + ")"
+            })
+        );
     }
 }
 
@@ -49,7 +66,7 @@ function appendComments(id) {
                         list.append(
                             $('<li/>', {
                                 'id': 'comment-' + key,
-                                'text': obj.name + ': ' + obj.comment
+                                'text': obj.name + ': \"' + obj.comment + "\" (" + formatDate(new Date(obj.date)) + ")"
                             })
                         );
                     }
